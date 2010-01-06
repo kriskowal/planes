@@ -1,0 +1,118 @@
+
+window, body, #prompt {
+	font-family: Verdana;
+	font-size: 12px;
+    background-color: #46B3D3;
+}
+
+.table
+{
+	border-top: 0;
+	border-left: 0;
+	border-bottom: solid #eeeeee 1px;
+	border-right: solid #eeeeee 1px;
+}
+
+.table td
+{
+	vertical-align: top;
+	border-bottom: 0;
+	border-right: 0;
+	border-top: solid #eeeeee 1px;
+	border-left: solid #eeeeee 1px;
+}
+
+.table th
+{
+	border-bottom: 0;
+	border-right: 0;
+	border-top: solid #eeeeee 1px;
+	border-left: solid #eeeeee 1px;
+}
+
+#command {
+    width: 100%;
+    background-color: #eeeeee;
+}
+
+.date {
+    color: #777777;
+}
+
+#widgets {
+    position: fixed;
+    width: 95%;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 10px;
+}
+
+#map {
+    position: fixed;
+    /*width: 50%;*/
+    top: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 10px;
+    text-align: right;
+}
+
+#map table {
+    border: solid #103030 0px;
+    border-spacing: 0px;
+    /*width: 266;*/
+    /*height: 266;*/
+    padding: 10px;
+    margin: 0px;
+}
+
+#map tr {
+    height: 35px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+#map td {
+    width: 40px;
+    height: 40px;
+    border: solid #204040 0px;
+}
+
+/* Walls */
+#map .north {border-top:    solid #000000 1px;}
+#map .south {border-bottom: solid #000000 1px;}
+#map .east  {border-right:  solid #000000 1px;}
+#map .west  {border-left:   solid #000000 1px;}
+#map .sprite {
+    /*width: 90%;
+    height: 90%;*/
+    border: 0px;
+}
+
+#hud {
+    position: fixed;
+    width: 50%;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 10px;
+    text-align: left;
+    padding: 10px;
+}
+
+#hud table {
+    width: 100%;
+    border: solid #000000 1px;
+    border-spacing: 0px;
+    padding: 0px;
+    margin: 0px;
+    /*background-color: #46B3D3;*/
+}
+
+#hud td {
+    height: 11px;
+    border: 0;
+}
+

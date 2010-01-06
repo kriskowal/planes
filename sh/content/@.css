@@ -1,0 +1,43 @@
+
+window, body, #prompt {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+    background-color: #ffffff;
+}
+
+.table
+{
+	border-top: 0;
+	border-left: 0;
+	border-bottom: solid #eeeeee 1px;
+	border-right: solid #eeeeee 1px;
+}
+
+.table td
+{
+	vertical-align: top;
+	border-bottom: 0;
+	border-right: 0;
+	border-top: solid #eeeeee 1px;
+	border-left: solid #eeeeee 1px;
+}
+
+.table th
+{
+	border-bottom: 0;
+	border-right: 0;
+	border-top: solid #eeeeee 1px;
+	border-left: solid #eeeeee 1px;
+}
+
+#command {
+    width: 100%;
+    background-color: #eeeeee;
+}
+
+#title {
+    font-size: 40px;
+    font-family: Courier New, Courier, serif;
+    font-weight: bold;
+}
+

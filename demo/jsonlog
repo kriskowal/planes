@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+
+from planes.python.module_path import module_path
+from planes.lazy import \
+     JsonReaderService, JsonWriterService,\
+     FunctionService,\
+     PathService, LogService, ResponseService,\
+     FileTreeService, FileService,\
+     serve
+from planes.response import Response, Redirect
+
+messages = []
+
+@JsonReaderService
+def write(kit, object):
+    messages.append(object)
+    return Response()
+
+@FunctionService
+@JsonWriterService
+def read(kit, n = None):
+    if n is not None:
+        n = int(n)
+        return messages[n:]
+    else:
+        return messages
+
+service = PathService(
+    service = Redirect('js/run.html?/jsonlog.js'),
+    next_service = None,
+    paths = {
+        'read': read,
+        'write': write,
+        'js': FileTreeService(module_path(__file__, '..', 'chiron')),
+        'jsonlog.js': FileService(module_path(__file__, 'jsonlog.js')),
+    },
+)
+service = LogService(service)
+service = ResponseService(service)
+serve(service, port = 8080)
+

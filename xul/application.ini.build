@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+from config import *
+
+print >> file('application.ini', 'w'), """\
+[App]
+Vendor=%(company)s
+Name=%(app_name)s
+Version=%(version)s
+BuildID=%(build_version)s
+
+[Gecko]
+MinVersion=%(geckoMinVersion)s
+MaxVersion=%(geckoMaxVersion)s
+""" % vars()

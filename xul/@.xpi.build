@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+APP=`python -c 'from config import *; print app'`
+
+./chrome.build
+./install.rdf.build
+./install.js.build
+
+XPI="@.xpi"
+[ -f $XPI ] && rm $XPI
+echo $XPI
+find install.rdf install.js chrome.manifest chrome components defaults \
+    | grep -v /.svn \
+    | grep -v '.build$' \
+    | xargs zip $XPI
+

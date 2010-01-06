@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+
+import sys
+sys.path.append('.')
+from config import *
+
+# XUL overlays
+overlay_set = set(value for key, value in overlays)
+overlay_list = "\n".join(
+    (
+        """
+            <RDF:li resource="chrome://%s"/>
+        """ % overlay
+    ) for overlay in overlay_set
+)
+overlay_information = "\n".join(
+    """
+        <RDF:Seq about="chrome://%s">
+                <RDF:li>chrome://%s</RDF:li>
+        </RDF:Seq>
+    """ % (that, this)
+    for this, that in overlays
+)
+
+# Stylesheet Overlays
+# a stylesheet overlay would look like this:
+stylesheet_set = set(value for key, value in stylesheets)
+stylesheet_list = "\n".join(
+    (
+        """
+            <RDF:li resource="chrome://%s"/>
+        """ % stylesheet
+    ) for stylesheet in stylesheet_set
+)
+stylesheet_information = "\n".join(
+    """
+        <RDF:Seq about="chrome://%s">
+                <RDF:li>chrome://%s</RDF:li>
+        </RDF:Seq>
+    """ % (that, this)
+    for this, that in stylesheets
+)
+
+print >> file('content/contents.rdf', 'w'), """\
+<?xml version="1.0"?>
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:chrome="http://www.mozilla.org/rdf/chrome#">
+
+    <!-- list all the packages being supplied by this jar -->
+    <RDF:Seq about="urn:mozilla:package:root">
+        <RDF:li resource="urn:mozilla:package:%(app)s"/>
+    </RDF:Seq>
+
+    <!-- package information -->
+    <RDF:Description about="urn:mozilla:package:%(app)s"
+        chrome:displayName="%(name)s %(version)s"
+        chrome:author="%(author)s"
+        chrome:authorURL="%(authorURL)s"
+        chrome:description="%(description)s"
+        chrome:localeVersion=""
+        chrome:extension="true"
+        chrome:name="%(app)s">
+    </RDF:Description>
+
+    <!-- overlay information -->
+    <RDF:Seq about="urn:mozilla:overlays">
+        %(overlay_list)s
+    </RDF:Seq>
+    %(overlay_information)s
+
+    <!-- stylesheet information -->
+    <RDF:Seq about="urn:mozilla:stylesheets">
+        %(stylesheet_list)s
+    </RDF:Seq>
+    %(stylesheet_information)s
+
+</RDF:RDF>""" % vars()

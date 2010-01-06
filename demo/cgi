@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+from planes.cgi import serve
+
+#import sys
+#sys.path.insert(0, 'path/to/settings')
+import settings
+
+serve(
+    service = settings.service,
+    debug = settings.debug,
+    port = settings.port,
+)
+

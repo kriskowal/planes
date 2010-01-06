@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="@.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://ish/locale/overlay.dtd">
+<window
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="ish"
+    title="&ish.title;"
+    orient="vertical"
+    sizemode="normal"
+    height="500"
+    width="600"
+>
+    <deck flex="1" id="deck">
+        <vbox flex="1">
+            <space flex="1"/>
+            <hbox id="commandLine">
+                <vbox>
+                    <span flex="1"/>
+                    <label value="Connect:"/>
+                    <span flex="1"/>
+                </vbox>
+                <textbox id="command" value="https://localhost:2380" flex="1"/>
+                <button id="ok" label="Ok"/>
+            </hbox>
+        </vbox>
+        <vbox>
+            <toolbar>
+                <button id="connect" label="Disconnect"/>
+            </toolbar>
+            <browser flex="1" id="browser"/>
+        </vbox>
+    </deck>
+    <script>
+        window.onload = (function () {
+            try {
+
+                var deck = document.getElementById('deck');
+                var commandInput = document.getElementById('command');
+                var okButton = document.getElementById('ok');
+                var connectButton = document.getElementById('connect');
+                var browser = document.getElementById('browser');
+
+                var focus = function () {
+                    commandInput.select();
+                };
+
+                var submit = function () {
+                    browser.loadURI(commandInput.value);
+                    deck.selectedIndex = 1;
+                }
+
+                connectButton.onclick = function () {
+                    browser.loadURI('about:blank');
+                    deck.selectedIndex = 0;
+                }
+
+
+                window.onfocus = focus;
+                focus();
+
+                commandInput.onkeydown = function (event) {
+                    try {
+                        var key = String.fromCharCode(event.which);
+                        if (0) {
+                        } else if (event.which == 13) { // enter
+                            submit();
+                            return false;
+                        }
+                        return true;
+                    } catch (exception) {
+                        alert('exception: ' + exception);
+                    }
+                }
+
+                okButton.onclick = submit;
+
+            } catch (exception) {
+                alert('exception: ' + exception)
+            }
+        })
+    </script>
+</window>

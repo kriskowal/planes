@@ -1,0 +1,4 @@
+#!/bin/bash
+# install twisted for Python (install zope for Python)
+svn co https://cixar.com/svns/javascript/trunk/src chiron
+ln -s .. demo/planes

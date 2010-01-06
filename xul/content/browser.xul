@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://ish/locale/overlay.dtd">
+
+<overlay
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="IshOverlay"
+>
+
+	<menupopup id="menu_ToolsPopup">
+		<menuitem id="ShellMenuItem" oncommand="window.open('chrome://ish/content/@.xul', '', 'chrome,minimizable,resizable');" 
+			insertafter="javascriptConsole,devToolsSeparator"
+			label="&ish.browser.menuitem.label;"
+            accesskey="&ish.browser.menuitem.accesskey;"
+        />
+	</menupopup>
+
+</overlay>

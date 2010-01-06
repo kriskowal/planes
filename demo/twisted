@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+from planes.base import serve
+from planes.lazy import StandardService, Response
+import settings
+
+serve(
+    service = settings.service,
+    debug = settings.debug,
+    port = settings.port,
+)
+

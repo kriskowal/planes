@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+
+from cixar.ish.chat import run
+run(
+    port = 2380,
+    ssl = True,
+)
+
